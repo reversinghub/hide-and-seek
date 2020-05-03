@@ -11,14 +11,14 @@
 
 #pragma comment(lib, "USER32")
 
-#define 	MAIN_WINDOW			L"Task Manager"
-#define		VIEW_MENU			2
-#define		UPDATE_SUBMENU		1
+#define     MAIN_WINDOW         L"Task Manager"
+#define     VIEW_MENU           2
+#define     UPDATE_SUBMENU      1
 
 // Menus related commands
-#define 	WM_COMMAND          0x0111
-#define 	MF_BYPOSITION		0x00000400L
-#define 	MF_GRAYED			0x00000001L
+#define     WM_COMMAND          0x0111
+#define     MF_BYPOSITION       0x00000400L
+#define     MF_GRAYED           0x00000001L
 
 // Define colours
 #define     RED_ERR             12
