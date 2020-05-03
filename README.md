@@ -10,7 +10,7 @@ Window messages can be used to communicate user actions to other processes. This
 
 *The same technique can be used to hide Windows services, registry keys from Regedit or other elements* 
 
-> User Interface Privilege Isolation (UIPI) is a technology introduced in Windows Vista and Windows Server 2008 to combat [shatter attack exploits](https://en.wikipedia.org/wiki/Shatter_attack). UIPI's Mandatory Integrity Control prevents processes with a lower integrity level from sending messages to higher integrity level processes (except for a very specific set of UI messages).
+> User Interface Privilege Isolation (UIPI) is a technology introduced in Windows Vista and Windows Server 2008 to combat [shatter attack exploits](https://en.wikipedia.org/wiki/Shatter_attack). UIPI's Mandatory Integrity Control prevents processes with a lower integrity level from sending messages to higher integrity level processes (*except for a very specific set of UI messages*).
  
  Use WinSpy++ or Au3Info to view windows elements and handles
  
