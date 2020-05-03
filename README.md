@@ -23,9 +23,10 @@ When creating this PoC, [WinSpy++](https://www.autohotkey.com/boards/viewtopic.p
 One other difficulty is that one process cannot easily read elements from another process's GUI elements, like list items. For this, I had to use a [workaround]( * [Stealing a program's memory](http://www.codeproject.com/Articles/5570/Stealing-Program-s-Memory)) and allocate memory inside the target process - Task Manager, then retrieve process list elements to that memory block.
 
 The PoC also does a few things to prevent the reappearance of the hidden process:
-* Pauses the refresh for the process list
-* Disables the 
 
+* Pauses the refresh for the process list
+* Disables the _Update speed_ menu
+* Disables the _Refresh now_ menu option
 
 ### Usage
 
@@ -35,16 +36,13 @@ The PoC also does a few things to prevent the reappearance of the hidden process
 
 ![Usage](img/howto.png)
 
-disables refresh
-updates speed paused
+* Note that after a first run the _Refresh now_ will be disabled and also the _Update speed_ will be paused. To re-test, Task Manager needs to be restarted!
 
 ### Compile
-compiled with ...
- Microsoft Visual Studio Community 2019
-Version 16.5.3
 
-MS Widows 8.1 enterprise Version 6.3.9600
-64-bits
+Compiled with __*Microsoft Visual Studio Community 2019, Version 16.5.3__* as a **64-bit application** - This is very important since Task Manager is a 64-bit application and reading/writing from it's memory from a 32-bit process would be a lot more difficult.
+
+Tested on MSicrosoft Widows 8.1 Enterprise, Version 6.3.9600, 64-bit.
 
 ### References
  * [WinSpy++](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=28220)
