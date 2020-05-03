@@ -10,30 +10,30 @@ Window messages can be used to communicate user actions to other processes. This
 
 *The same technique can be used to hide Windows services, registry keys from Regedit or other elements* 
 
+The first hurdle to overcome when creating this is *__UIPI__*.
+
 > User Interface Privilege Isolation (UIPI) is a technology introduced in Windows Vista and Windows Server 2008 to combat [shatter attack exploits](https://en.wikipedia.org/wiki/Shatter_attack). UIPI's Mandatory Integrity Control prevents processes with a lower integrity level from sending messages to higher integrity level processes (*except for a very specific set of UI messages*).
- 
- Use WinSpy++ or Au3Info to view windows elements and handles
- 
- 
- WinSpy++ shows elements hierarchy!
- ![WinSpy++](img/winspy.png)
 
- Tested on 
+Because on UIPI, nowadays this technique requires running the process with elevated privileges. In a real world scenario, UAC [can be bypassed](https://github.com/hfiref0x/UACME) and [UIPI can be disabled](https://nsylvain.blogspot.com/2008/01/integrity-drop-or-how-to-disable-uipi.html)
 
-UIPI -> admin rights
+When creating this PoC, [WinSpy++](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=28220) was tremendously useful to figure out the hierarchy of various Windows elements of Task Manager. Kudos to AutoIt team for this great tool!
+ 
+![WinSpy++](img/winspy.png)
 
-read other processese memory
+One other difficulty is that one process cannot easily read elements from another process's GUI elements, like list items. For this, I had to use a [workaround]( * [Stealing a program's memory](http://www.codeproject.com/Articles/5570/Stealing-Program-s-Memory)) and allocate memory inside the target process - Task Manager, then retrieve process list elements to that memory block.
+
+The PoC also does a few things to prevent the reappearance of the hidden process:
+* Pauses the refresh for the process list
+* Disables the 
+
 
 ### Usage
 
- *  - Start Windows Task Manager -> Details tab.
- *  - Launch calc.exe
- *  - Launch hideProc.exe
- * 
+* Start *Windows Task Manager* ➝ Details tab.
+* Launch a test process (```calc.exe```)
+* Launch the PoC from a console with admin rights
 
 ![Usage](img/howto.png)
-
-admin 
 
 disables refresh
 updates speed paused
@@ -47,6 +47,9 @@ MS Widows 8.1 enterprise Version 6.3.9600
 64-bits
 
 ### References
- 
+ * [WinSpy++](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=28220)
  * [User Interface Privilege Isolation](https://en.wikipedia.org/wiki/User_Interface_Privilege_Isolation)
+ * [The integrity drop - or - How to disable UIPI take 2](https://nsylvain.blogspot.com/2008/01/integrity-drop-or-how-to-disable-uipi.html)
+ * [hfiref0x/UACME](https://github.com/hfiref0x/UACME)
+ * [Shatter attack](https://en.wikipedia.org/wiki/Shatter_attack)
  * [Stealing a program's memory](http://www.codeproject.com/Articles/5570/Stealing-Program-s-Memory)
