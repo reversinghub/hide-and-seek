@@ -21,7 +21,7 @@ The first hurdle to overcome when creating this is *__UIPI__*:
 
 > User Interface Privilege Isolation (UIPI) is a technology introduced in Windows Vista and Windows Server 2008 to combat [shatter attack exploits](https://en.wikipedia.org/wiki/Shatter_attack). UIPI's Mandatory Integrity Control prevents processes with a lower integrity level from sending messages to higher integrity level processes (*except for a very specific set of UI messages*).
 
-Because of UIPI, nowadays this technique requires running the process with elevated privileges. In a real world scenario, UAC [can be bypassed](https://github.com/hfiref0x/UACME) and [UIPI can be disabled](https://nsylvain.blogspot.com/2008/01/integrity-drop-or-how-to-disable-uipi.html).
+Because of UIPI, nowadays this technique requires running the process with elevated privileges. In a real world scenario, UAC and UIPI [can both be bypassed](https://github.com/hfiref0x/UACME). Processes can also choose to [disable UIPI](https://nsylvain.blogspot.com/2008/01/integrity-drop-or-how-to-disable-uipi.html).
 
 When creating this PoC, [WinSpy++](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=28220) was tremendously useful to figure out the hierarchy of various Windows elements of Task Manager. Kudos to James Brown (WinSpy++ developer) and other people who worked on creating and maintaining this great tool!
  
